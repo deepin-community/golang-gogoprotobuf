@@ -1,4 +1,9 @@
 #!/usr/bin/make -f
 
+# unused binaries
+export DH_GOLANG_EXCLUDES = conformance gogoreplace test/mixbench
+export DH_GOLANG_GO_GENERATE := 1
+export PATH := $(CURDIR)/_build/bin:$(PATH)
+
 %:
-	dh $@
+	dh $@ --buildsystem=golang --with=golang --builddirectory=_build
